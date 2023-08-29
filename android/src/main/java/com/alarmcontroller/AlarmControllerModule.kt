@@ -1,5 +1,7 @@
 package com.alarmcontroller
 
+import android.content.Intent
+import android.provider.MediaStore
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -12,11 +14,10 @@ class AlarmControllerModule(reactContext: ReactApplicationContext) :
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
   @ReactMethod
-  fun multiply(a: Double, b: Double, promise: Promise) {
-    promise.resolve(a * b)
+  fun setAlarm(promise: Promise) {
+
+    promise.resolve("alarme setado com sucesso!");
   }
 
   companion object {

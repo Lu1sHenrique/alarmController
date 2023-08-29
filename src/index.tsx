@@ -1,22 +1,9 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules } from 'react-native';
 
-const LINKING_ERROR =
-  `The package 'alarm-controller' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+    type AlarmControllerType = {
+      setAlarm(): Promise<string>;
+    }
 
-const AlarmController = NativeModules.AlarmController
-  ? NativeModules.AlarmController
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    const { AlarmController } = NativeModules;
 
-export function multiply(a: number, b: number): Promise<number> {
-  return AlarmController.multiply(a, b);
-}
+    export default AlarmController as AlarmControllerType;

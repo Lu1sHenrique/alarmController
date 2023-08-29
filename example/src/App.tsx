@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'alarm-controller';
+import AlarmController from 'alarm-controller';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    AlarmController.setAlarm().then(setResult);
   }, []);
 
   return (
